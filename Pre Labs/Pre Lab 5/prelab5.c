@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 // #################### No Touch ##############################
 
 void * createArray(int arraySize, int dataTypeSize){ 
@@ -31,7 +32,11 @@ typedef struct employee{ // Employee Struct
 } Employee;
 
 Employee * readEmployeeArray(FILE *fp);
-Employee * getEmployeeByID(Employee *, int empID);
+Employee * getEmployeeByID(Employee *array, int empID);
+int setEmpSalary(Employee *array, int empID, float salary);
+int getEmpSalary(Employee *array, int empID, float *salary);
+int setEmpJobType(Employee *array, int empID, int job);
+int getEmpJobType(Employee *array, int empID, int *job);
 
 int main(void){
     FILE *fp = fopen("empData.txt", "r");
@@ -42,9 +47,9 @@ int main(void){
     Employee *array = readEmployeeArray(fp);
     for(int i = 0; i< *(((int *)array)-1); i++) printf("%d, %d, %f\n", array[i].empID, array[i].jobType, array[i].salary);
 
-    array[1].salary = 1234.65123;
-    printf("%f\n", array[1].salary);
-
+    int imp = 3;
+    setEmpSalary(array, imp, 20);
+    printf("%f\n", getEmployeeByID(array, imp)->salary);
 }
 
 Employee * readEmployeeArray(FILE *fp){
@@ -60,3 +65,14 @@ Employee * readEmployeeArray(FILE *fp){
     }
     return array;
 }
+
+Employee * getEmployeeByID(Employee *array, int empID){
+    for(int i = 0; i<*((int *)array -1); i++) if(array[i].empID == empID) return array+i;
+    return NULL;
+}
+
+int setEmpSalary(Employee *array, int empID, float salary){
+    getEmployeeByID(array, empID)->salary=salary;
+    return(0);
+}
+
