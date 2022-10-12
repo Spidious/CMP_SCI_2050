@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 
+
 // #################### No Touch ##############################
 
 void * createArray(int arraySize, int dataTypeSize){ 
@@ -39,6 +40,8 @@ int setEmpJobType(Employee *array, int empID, int job);
 int getEmpJobType(Employee *array, int empID, int *job);
 
 int main(void){
+    printf("%p\n", NULL);
+    printf("%d\n", !NULL);
     FILE *fp = fopen("empData.txt", "r");
     if(fp == NULL){
         printf("Could not open file\n");
