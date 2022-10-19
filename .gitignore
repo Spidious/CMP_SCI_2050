@@ -2,3 +2,5 @@
 *.out
 *.zip
 .prettierrc
+.gitignore
+.prettierrc
