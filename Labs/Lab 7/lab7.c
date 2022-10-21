@@ -85,12 +85,17 @@ void * getAtIndex(Node *head, int index){
     return indexNode->data;
 }
 
+// Frees a linked list
+// takes a node pointer to the head of a list
 void freeList(Node *head){
-    Node *hold;
+    // create hold
+    Node *hold;\
+    // remove each node in the list
     while(head->next!=NULL){
         hold = head->next;
         free(head);
         head = hold;
     }
+    // free the final remaining node
     free(head);
 }
