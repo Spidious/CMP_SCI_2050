@@ -10,6 +10,7 @@ EmpDatabase createSearchableEmployeeDB(Employee ** arr, int n){
     return array;
 }
 
+
 // sort by id
 void sortByID(EmpDatabase * database){
     int n = database->size;
